@@ -1,19 +1,32 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Earth Defender</title>
-    <style>
-        canvas{
-            border : 1px solid black;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+    <img src="public/images/DefaultGameObject.png" alt="asset_default" id="asset_default" hidden>
+    <img src="public/images/Alien.png" alt="alien" id="asset_alien" hidden>
+    <img src="public/images/Earth.png" alt="earth" id="asset_earth" hidden>
+    <img src="public/images/Player.png" alt="player" id="asset_player" hidden>
+    <img src="public/images/Star.png" alt="star" id="asset_star" hidden>
+    <img src="public/images/Laser.png" alt="laser" id="asset_laser" hidden>
+    <img src="public/images/Heart.png" alt="heart" id="asset_heart" hidden>
+    <img src="public/images/Alien-icon.png" alt="icon-Alien" id="asset_icon_alien" hidden>
+    <img src="public/images/Player-icon.png" alt="icon-Player" id="asset_icon_player" hidden >
+
+    <audio src="public/Sound/background-sound.mp3" id="sound_background"></audio>
+    <audio src="public/Sound/contact.mp3" id="sound_contact"></audio>
+    <audio src="public/Sound/laser.mp3" id="sound_laser"></audio>
+    <audio src="public/Sound/error.mp3" id="sound_fall"></audio>
     <canvas>
 
     </canvas>
 </body>
 <script type="module" src="./build/script.js"></script>
+
 </html>
