@@ -27,4 +27,11 @@ export class Sounds {
         }
         return new Audio(audio.src);
     }
+    public static playGameOver(): HTMLAudioElement {
+        const audio : HTMLAudioElement = document.querySelector("audio#sound_gameover");
+        if(audio == null){
+            throw Error("No sound found");
+        }
+        return new Audio(audio.src)
+        }
 }

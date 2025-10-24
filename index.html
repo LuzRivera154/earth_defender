@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Earth Defender</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sixtyfour+Convergence&family=Tiny5&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -17,12 +21,22 @@
     <img src="public/images/Laser.png" alt="laser" id="asset_laser" hidden>
     <img src="public/images/Heart.png" alt="heart" id="asset_heart" hidden>
     <img src="public/images/Alien-icon.png" alt="icon-Alien" id="asset_icon_alien" hidden>
-    <img src="public/images/Player-icon.png" alt="icon-Player" id="asset_icon_player" hidden >
+    <img src="public/images/Player-icon.png" alt="icon-Player" id="asset_icon_player" hidden>
 
     <audio src="public/Sound/background-sound.mp3" id="sound_background"></audio>
     <audio src="public/Sound/contact.mp3" id="sound_contact"></audio>
     <audio src="public/Sound/laser.mp3" id="sound_laser"></audio>
     <audio src="public/Sound/error.mp3" id="sound_fall"></audio>
+    <audio src="public/Sound/game-over.mp3" id="sound_gameover"></audio>
+
+    <!-- Game start-->
+    <div class="screen-start">
+        <h1 id="title">START GAME</h1>
+        <p id="subtitle">Press start</p>
+        <button id="btn-start">Start</button>
+    </div>
+    <!-- Game Over -->
+    <img src="public/images/GameOver.png" alt="GameOver" id="asset_gameover" hidden>
     <canvas>
 
     </canvas>

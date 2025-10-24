@@ -64,6 +64,13 @@ var Assets = /** @class */ (function () {
         }
         return image;
     };
+    Assets.getGameOverImage = function () {
+        var image = document.querySelector("img#asset_gameover");
+        if (image == null) {
+            throw Error("No assets found");
+        }
+        return image;
+    };
     return Assets;
 }());
 export { Assets };

@@ -29,6 +29,13 @@ var Sounds = /** @class */ (function () {
         }
         return new Audio(audio.src);
     };
+    Sounds.playGameOver = function () {
+        var audio = document.querySelector("audio#sound_gameover");
+        if (audio == null) {
+            throw Error("No sound found");
+        }
+        return new Audio(audio.src);
+    };
     return Sounds;
 }());
 export { Sounds };

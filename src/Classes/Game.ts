@@ -8,6 +8,7 @@ import { Heart } from "./GameObjects/Heart.js";
 import { IconAlien } from "./GameObjects/IconAlien.js";
 import { IconPlayer } from "./GameObjects/IconPlayer.js";
 import { Sounds } from "./Sounds.js";
+import { GameOver } from "./GameObjects/GameOver.js";
 
 export class Game {
     // Public attributs
@@ -24,7 +25,10 @@ export class Game {
     private iconAlien: IconAlien;
     private iconPlayer: IconPlayer;
     private alienDead: number = 0;
-    private bgSound : HTMLAudioElement;
+    private bgSound: HTMLAudioElement;
+    private gosound :HTMLAudioElement;
+    private gameOver: GameOver;
+    private interval: number;
     private gameObjects: GameObject[] = [];
 
 
@@ -79,7 +83,7 @@ export class Game {
         Input.listen();
 
         this.bgSound = Sounds.playBackgroundSound();
-        this.bgSound.volume = 0.3;
+        this.bgSound.volume = 0.5;
         this.bgSound.loop = true;
         this.bgSound.play()
         //loop
@@ -87,14 +91,21 @@ export class Game {
     }
 
     public over(): void {
-        if(this.bgSound){
+        this.gosound = Sounds.playGameOver();
+        if (this.bgSound) {
             this.bgSound.pause();
             this.bgSound.currentTime = 0;
         }
-        alert("Game Over!");
-        window.location.reload();
+        
+        this.gameOver = new GameOver(this)
+        this.instanciate(this.gameOver);
+        this.gosound.play()
+        setTimeout(() => {
+            clearInterval(this.interval)
+        }, 50);
+        
+        setTimeout(() => window.location.reload(), 3000);
     }
-
     public instanciate(gameObject: GameObject): void {
         this.gameObjects.push(gameObject);
     }
@@ -148,7 +159,7 @@ export class Game {
     // Crear mas aliens 
 
     private loop() {
-        setInterval(() => {
+       this.interval = setInterval(() => {
             // J'efface la frame précédente.
             this.context.clearRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
             this.context.fillStyle = "#141414";
@@ -157,7 +168,6 @@ export class Game {
             this.gameObjects.forEach(go => {
                 go.callUpdate();
                 this.draw(go);
-               
 
                 this.gameObjects.forEach(other => {
 

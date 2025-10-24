@@ -7,6 +7,7 @@ import { Heart } from "./GameObjects/Heart.js";
 import { IconAlien } from "./GameObjects/IconAlien.js";
 import { IconPlayer } from "./GameObjects/IconPlayer.js";
 import { Sounds } from "./Sounds.js";
+import { GameOver } from "./GameObjects/GameOver.js";
 var Game = /** @class */ (function () {
     function Game() {
         // Public attributs
@@ -54,19 +55,26 @@ var Game = /** @class */ (function () {
         // Listen to input
         Input.listen();
         this.bgSound = Sounds.playBackgroundSound();
-        this.bgSound.volume = 0.3;
+        this.bgSound.volume = 0.5;
         this.bgSound.loop = true;
         this.bgSound.play();
         //loop
         this.loop();
     };
     Game.prototype.over = function () {
+        var _this = this;
+        this.gosound = Sounds.playGameOver();
         if (this.bgSound) {
             this.bgSound.pause();
             this.bgSound.currentTime = 0;
         }
-        alert("Game Over!");
-        window.location.reload();
+        this.gameOver = new GameOver(this);
+        this.instanciate(this.gameOver);
+        this.gosound.play();
+        setTimeout(function () {
+            clearInterval(_this.interval);
+        }, 50);
+        setTimeout(function () { return window.location.reload(); }, 3000);
     };
     Game.prototype.instanciate = function (gameObject) {
         this.gameObjects.push(gameObject);
@@ -107,7 +115,7 @@ var Game = /** @class */ (function () {
     // Crear mas aliens 
     Game.prototype.loop = function () {
         var _this = this;
-        setInterval(function () {
+        this.interval = setInterval(function () {
             // J'efface la frame précédente.
             _this.context.clearRect(0, 0, _this.CANVAS_WIDTH, _this.CANVAS_HEIGHT);
             _this.context.fillStyle = "#141414";

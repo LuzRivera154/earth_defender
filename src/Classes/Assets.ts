@@ -41,25 +41,32 @@ export class Assets {
         }
         return image;
     }
-    public static getHeartImage() : HTMLImageElement {
-        const image : HTMLImageElement = document.querySelector("img#asset_heart");
+    public static getHeartImage(): HTMLImageElement {
+        const image: HTMLImageElement = document.querySelector("img#asset_heart");
         if (image == null) {
             throw Error("No assets found");
         }
         return image;
     }
-    public static getIconAlienImage() : HTMLImageElement{
-        const image : HTMLImageElement = document.querySelector("img#asset_icon_alien");
-        if (image == null){
-            throw Error ("No assets found");
-        }
-        return image;
-    }
-    public static getIconPlayerImage() : HTMLImageElement{
-        const image : HTMLImageElement = document.querySelector("img#asset_icon_player");
-        if(image == null){
+    public static getIconAlienImage(): HTMLImageElement {
+        const image: HTMLImageElement = document.querySelector("img#asset_icon_alien");
+        if (image == null) {
             throw Error("No assets found");
         }
         return image;
+    }
+    public static getIconPlayerImage(): HTMLImageElement {
+        const image: HTMLImageElement = document.querySelector("img#asset_icon_player");
+        if (image == null) {
+            throw Error("No assets found");
+        }
+        return image;
+    }
+    public static getGameOverImage(): HTMLImageElement {
+        const image: HTMLImageElement = document.querySelector("img#asset_gameover")
+        if (image == null) {
+            throw Error("No assets found");
+        }
+        return image
     }
 }

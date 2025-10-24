@@ -15,31 +15,25 @@ var __extends = (this && this.__extends) || (function () {
 })();
 import { Assets } from "../Assets.js";
 import { GameObject } from "./GameObjects.js";
-var IconAlien = /** @class */ (function (_super) {
-    __extends(IconAlien, _super);
-    function IconAlien() {
+var GameOver = /** @class */ (function (_super) {
+    __extends(GameOver, _super);
+    function GameOver() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    IconAlien.prototype.start = function () {
-        this.setImage(Assets.getIconAlienImage());
+    GameOver.prototype.start = function () {
+        this.setImage(Assets.getGameOverImage());
         this.setPosition({
-            x: 5,
-            y: 20,
+            x: 200,
+            y: 250
         });
     };
-    IconAlien.prototype.update = function () {
+    GameOver.prototype.update = function () {
         this.setPosition({
             x: this.getPosition().x,
-            y: this.getPosition().y
+            y: this.getPosition().y,
         });
         this.limit();
-        var text = this.getGame().getContext();
-        text.font = "1.5rem serif";
-        text.fillStyle = "white";
-        var x = 60;
-        var y = 45;
-        text.fillText(this.getGame().getAlienDead() + " / " + this.getGame().getNbAlien().toString(), x, y);
     };
-    return IconAlien;
+    return GameOver;
 }(GameObject));
-export { IconAlien };
+export { GameOver };

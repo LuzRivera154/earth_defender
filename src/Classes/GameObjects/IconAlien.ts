@@ -6,7 +6,7 @@ export class IconAlien extends GameObject {
     protected start(): void {
         this.setImage(Assets.getIconAlienImage());
         this.setPosition({
-            x:15,
+            x:5,
             y:20,
         })
     }
@@ -20,7 +20,7 @@ export class IconAlien extends GameObject {
         const text = this.getGame().getContext();
         text.font = "1.5rem serif"
         text.fillStyle ="white"
-        const x = 55;
+        const x = 60;
         const y = 45;
         text.fillText(this.getGame().getAlienDead() +" / " + this.getGame().getNbAlien().toString() ,
             x, y)

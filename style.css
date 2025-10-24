@@ -1,4 +1,69 @@
-canvas {
+.screen-start {
+    background-image: url(public/images/bgstargif.gif);
     border: 1px solid black;
+    width: 1000px;
+    height: 900px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
+#play-start {
+    font-family: "Sixtyfour Convergence", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    width: 50rem;
+}
+
+#title {
+    font-family: "Sixtyfour Convergence", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "BLED" 34,
+        "SCAN" 3,
+        "XELA" 52,
+        "YELA" -32;
+    width: 50rem;
+    letter-spacing: 1rem;
+    padding: 2rem;
+    font-size: 9rem;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+#subtitle {
+    font-family: "Sixtyfour Convergence", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "BLED" 0,
+        "SCAN" 0,
+        "XELA" 0,
+        "YELA" 0;
+    font-size: 1.5rem;
+}
+
+#btn-start {
+    width: 15rem;
+    height: 5rem;
+    border-radius: 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+    font-family: "Sixtyfour Convergence", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "BLED" 0,
+        "SCAN" 0,
+        "XELA" 0,
+        "YELA" 0;
+    background: #4d012f2e;
+    border: 4px dashed #cb0f0f;
+}
+
+#btn-start:hover {
+    background: #4d012f88;
+    border: 4px dashed #941313;
+}
