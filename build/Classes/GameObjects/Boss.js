@@ -19,7 +19,7 @@ var Boss = /** @class */ (function (_super) {
     __extends(Boss, _super);
     function Boss() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.speed = 1;
+        _this.speed = 2;
         _this.life = 8;
         return _this;
     }
@@ -27,7 +27,7 @@ var Boss = /** @class */ (function (_super) {
         this.setImage(Assets.getBossImage());
         this.setPosition({
             x: Math.random() * this.getGame().CANVAS_WIDTH,
-            y: Math.random() * this.getGame().CANVAS_HEIGHT / 4 - 10,
+            y: Math.random() * this.getGame().CANVAS_HEIGHT / 4 - 50,
         });
     };
     Boss.prototype.update = function () {
