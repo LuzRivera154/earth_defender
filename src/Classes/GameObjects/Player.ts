@@ -17,7 +17,7 @@ export class Player extends GameObject {
         this.setImage(Assets.getPlayerImage());
         this.setPosition({
             x: this.getGame().CANVAS_WIDTH / 2,
-            y: this.getGame().CANVAS_HEIGHT - this.getImage().height - 75,
+            y: this.getGame().CANVAS_HEIGHT - this.getImage().height - 92,
         });
     }
     protected update(): void {

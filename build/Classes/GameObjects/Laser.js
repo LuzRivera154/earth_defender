@@ -16,6 +16,7 @@ var __extends = (this && this.__extends) || (function () {
 import { GameObject } from "./GameObjects.js";
 import { Assets } from "../Assets.js";
 import { Alien } from "./Alien.js";
+import { Boss } from "./Boss.js";
 var Laser = /** @class */ (function (_super) {
     __extends(Laser, _super);
     function Laser() {
@@ -51,6 +52,10 @@ var Laser = /** @class */ (function (_super) {
             this.getGame().destroy(other);
             this.getGame().destroy(this);
             this.getGame().setAddAlienDead();
+        }
+        else if (other instanceof Boss) {
+            other.bossAttack(1);
+            this.getGame().destroy(this);
         }
     };
     return Laser;

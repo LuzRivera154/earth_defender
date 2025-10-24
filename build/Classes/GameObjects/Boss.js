@@ -14,32 +14,38 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 import { Assets } from "../Assets.js";
-import { Earth } from "./Earth.js";
-var Heart = /** @class */ (function (_super) {
-    __extends(Heart, _super);
-    function Heart(game, earth) {
-        var _this = _super.call(this, game) || this;
-        _this.earth = earth;
+import { GameObject } from "./GameObjects.js";
+var Boss = /** @class */ (function (_super) {
+    __extends(Boss, _super);
+    function Boss() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.speed = 1;
+        _this.life = 8;
         return _this;
     }
-    Heart.prototype.start = function () {
-        this.setImage(Assets.getHeartImage());
+    Boss.prototype.start = function () {
+        this.setImage(Assets.getBossImage());
         this.setPosition({
-            x: this.getGame().CANVAS_WIDTH / 2 + 30,
-            y: this.getGame().CANVAS_HEIGHT - this.getImage().height - 40,
+            x: Math.random() * this.getGame().CANVAS_WIDTH,
+            y: Math.random() * this.getGame().CANVAS_HEIGHT / 4 - 10,
         });
     };
-    Heart.prototype.update = function () {
+    Boss.prototype.update = function () {
+        this.limit();
         this.setPosition({
             x: this.getPosition().x,
-            y: this.getPosition().y
+            y: this.getPosition().y += this.speed
         });
-        var text = this.getGame().getContext();
-        text.font = "1.2rem serif";
-        var x = this.getGame().CANVAS_WIDTH / 2 + 10;
-        var y = this.getGame().CANVAS_HEIGHT - this.getImage().height - 25;
-        text.fillText(this.earth.getLife().toString(), x, y);
     };
-    return Heart;
-}(Earth));
-export { Heart };
+    Boss.prototype.bossAttack = function (attack) {
+        this.life -= attack;
+        if (this.life <= 0) {
+            this.getGame().destroy(this);
+        }
+    };
+    Boss.prototype.getLife = function () {
+        return this.life;
+    };
+    return Boss;
+}(GameObject));
+export { Boss };

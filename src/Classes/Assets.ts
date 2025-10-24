@@ -62,6 +62,14 @@ export class Assets {
         }
         return image;
     }
+    public static getBossImage(): HTMLImageElement {
+        const image: HTMLImageElement = document.querySelector("img#asset_boss")
+        if (image == null) {
+            throw Error("No assets found");
+        }
+        return image
+    }
+
     public static getGameOverImage(): HTMLImageElement {
         const image: HTMLImageElement = document.querySelector("img#asset_gameover")
         if (image == null) {

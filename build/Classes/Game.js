@@ -8,6 +8,7 @@ import { IconAlien } from "./GameObjects/IconAlien.js";
 import { IconPlayer } from "./GameObjects/IconPlayer.js";
 import { Sounds } from "./Sounds.js";
 import { GameOver } from "./GameObjects/GameOver.js";
+import { Boss } from "./GameObjects/Boss.js";
 var Game = /** @class */ (function () {
     function Game() {
         // Public attributs
@@ -16,6 +17,7 @@ var Game = /** @class */ (function () {
         this.nbAliens = 12;
         this.nbStar = 50;
         this.alienDead = 0;
+        this.oneBoss = false;
         this.gameObjects = [];
         var canvas = document.querySelector("canvas");
         this.context = canvas.getContext("2d");
@@ -96,6 +98,10 @@ var Game = /** @class */ (function () {
             for (var i = 0; i < this.nbAliens; i++) {
                 this.alienDead = 0;
                 this.instanciate(new Alien(this));
+            }
+            if (this.nbAliens >= 22 && !this.oneBoss) {
+                this.instanciate(new Boss(this));
+                this.oneBoss = true;
             }
         }
     };

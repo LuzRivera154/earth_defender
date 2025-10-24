@@ -9,6 +9,7 @@ import { IconAlien } from "./GameObjects/IconAlien.js";
 import { IconPlayer } from "./GameObjects/IconPlayer.js";
 import { Sounds } from "./Sounds.js";
 import { GameOver } from "./GameObjects/GameOver.js";
+import { Boss } from "./GameObjects/Boss.js";
 
 export class Game {
     // Public attributs
@@ -26,9 +27,10 @@ export class Game {
     private iconPlayer: IconPlayer;
     private alienDead: number = 0;
     private bgSound: HTMLAudioElement;
-    private gosound :HTMLAudioElement;
+    private gosound: HTMLAudioElement;
     private gameOver: GameOver;
     private interval: number;
+    private oneBoss: boolean = false
     private gameObjects: GameObject[] = [];
 
 
@@ -96,14 +98,14 @@ export class Game {
             this.bgSound.pause();
             this.bgSound.currentTime = 0;
         }
-        
+
         this.gameOver = new GameOver(this)
         this.instanciate(this.gameOver);
         this.gosound.play()
         setTimeout(() => {
             clearInterval(this.interval)
         }, 50);
-        
+
         setTimeout(() => window.location.reload(), 3000);
     }
     public instanciate(gameObject: GameObject): void {
@@ -130,8 +132,11 @@ export class Game {
                 this.alienDead = 0;
                 this.instanciate(new Alien(this));
             }
+            if (this.nbAliens >= 22 && !this.oneBoss) {
+                this.instanciate(new Boss(this));
+                this.oneBoss = true
+            }
         }
-
     }
 
     public getContext(): CanvasRenderingContext2D {
@@ -159,7 +164,7 @@ export class Game {
     // Crear mas aliens 
 
     private loop() {
-       this.interval = setInterval(() => {
+        this.interval = setInterval(() => {
             // J'efface la frame précédente.
             this.context.clearRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
             this.context.fillStyle = "#141414";

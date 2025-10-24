@@ -1,6 +1,7 @@
 import { GameObject } from "./GameObjects.js";
 import { Assets } from "../Assets.js";
 import { Alien } from "./Alien.js";
+import { Boss } from "./Boss.js";
 
 export class Laser extends GameObject {
     private speed: number = 10;
@@ -30,8 +31,6 @@ export class Laser extends GameObject {
         if (this.getPosition().y < 0) {
             this.getGame().destroy(this);
         }
-
-
     }
 
     protected collide(other: GameObject): void {
@@ -39,6 +38,10 @@ export class Laser extends GameObject {
             this.getGame().destroy(other);
             this.getGame().destroy(this);
             this.getGame().setAddAlienDead()
+        } else if (other instanceof Boss){
+            other.bossAttack(1);
+            this.getGame().destroy(this);
+            
         }
     }
 }

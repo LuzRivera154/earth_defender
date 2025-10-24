@@ -12,7 +12,7 @@ export class Heart extends Earth {
         this.setImage(Assets.getHeartImage());
         this.setPosition({
             x: this.getGame().CANVAS_WIDTH / 2 + 30,
-            y: this.getGame().CANVAS_HEIGHT - this.getImage().height - 25,
+            y: this.getGame().CANVAS_HEIGHT - this.getImage().height - 40,
         })
     }
     protected update(): void {
@@ -24,7 +24,7 @@ export class Heart extends Earth {
         const text = this.getGame().getContext();
         text.font = "1.2rem serif"
         const x = this.getGame().CANVAS_WIDTH / 2 + 10;
-        const y = this.getGame().CANVAS_HEIGHT - this.getImage().height - 10;
+        const y = this.getGame().CANVAS_HEIGHT - this.getImage().height - 25;
         text.fillText(this.earth.getLife().toString(),
             x,y)
     }
